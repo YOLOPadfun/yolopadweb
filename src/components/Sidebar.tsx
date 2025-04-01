@@ -248,7 +248,7 @@ const Sidebar = () => {
 
       <FooterContainer>
         <FooterText>
-          Email: contact@yolopa.fun
+          Email: contact@yolopad.fun
         </FooterText>
         <Copyright>
           © 2025 YOLOPad. All rights reserved.

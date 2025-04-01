@@ -1,19 +1,14 @@
 name = "yolopadweb"
 compatibility_date = "2025-04-01"
+main = "build/index.html"
+
 
 [site]
 bucket = "./build"
 
 [build]
 command = "npm run build"
-output_dir = "build"
 
-[env.production]
-routes = [
-  { pattern = "/*", dest = "/index.html" }
-]
-
-[env.staging]
-routes = [
-  { pattern = "/*", dest = "/index.html" }
-] 
+[[routes]]
+pattern = "/*"
+static = true

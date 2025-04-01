@@ -1,7 +1,5 @@
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import {
-  mainnet,
-  optimism,
   bsc,
   // sonic
 } from 'wagmi/chains';
