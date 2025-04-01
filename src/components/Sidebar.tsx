@@ -79,6 +79,15 @@ const NavItem = styled(NavLink)`
     flex-direction: column;
     font-size: 12px;
 
+    &:hover {
+      background: none;
+      color: inherit;
+      
+      svg {
+        fill: currentColor;
+      }
+    }
+
     svg {
       margin: 0 0 4px 0;
       width: 20px;
@@ -303,7 +312,7 @@ const Sidebar = () => {
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
               </svg>
-              more
+              More
             </MoreButton>
 
             <DropdownMenu isOpen={isMoreOpen}>
