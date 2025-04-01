@@ -1,0 +1,61 @@
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import Sidebar from '../components/Sidebar';
+import {
+  BurnIcon,
+  MintingIcon,
+  RewardIcon,
+  BurnRewardIcon,
+  SecurityIcon,
+  TransparentIcon
+} from '../components/icons/FeatureIcons';
+import TopButtons from '../components/common/TopButtons';
+
+const HomeContainer = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #0a0a1a;
+  color: white;
+  text-align: center;
+  padding: 10px 10px;
+  margin-left: 240px;
+`;
+
+const MainTitle = styled.h1`
+  font-size: 40px;
+  background: linear-gradient(45deg,rgb(113, 248, 212),rgb(8, 188, 140));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 5px;
+`;
+
+const HomeTopButtons = styled(TopButtons)`
+`;
+
+const Home: React.FC = () => {
+  const handleConnectWallet = () => {
+    console.log('Connecting wallet...');
+  };
+
+  const handleBuyToken = () => {
+    console.log('Buying token...');
+  };
+
+  return (
+    <>
+      <Sidebar />
+      <HomeContainer>
+        <HomeTopButtons 
+          onFirstButtonClick={handleConnectWallet}
+          onSecondButtonClick={handleBuyToken}
+        />
+        
+        <MainTitle>YOU ONLY LAUNCH ONCE</MainTitle>
+       
+      </HomeContainer>
+    </>
+  );
+};
+
+export default Home; 

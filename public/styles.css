@@ -1,0 +1,131 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* General Styles */
+  body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    line-height: 1.6;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    background: #00d4ff;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 50px;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .cta-button:hover {
+    background: #0b8f95;
+  }
+  
+  .socials a {
+    color: #00d4ff;
+    margin: 0 10px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .socials a:hover {
+    color: #fff;
+  }
+  
+  /* Hero Section */
+  .hero {
+    height: 100vh;
+    background: url('background-image.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .hero-content h1 {
+    font-size: 4rem;
+    font-family: 'Russo One', sans-serif;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    margin-bottom: 20px;
+  }
+  
+  .hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .hero-content .cta-button {
+    margin-top: 20px;
+  }
+  
+  /* Feature Section */
+  .features {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 0;
+    text-align: center;
+  }
+  
+  .feature h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .feature p {
+    font-size: 1rem;
+    color: #aaa;
+  }
+  
+  /* Current Round Section */
+  .current-round {
+    padding: 50px 0;
+    text-align: center;
+    background: #222;
+  }
+  
+  .progress-bar {
+    height: 20px;
+    background: #333;
+    margin: 20px 0;
+    border-radius: 10px;
+  }
+  
+  .progress {
+    height: 100%;
+    background: #00d4ff;
+    border-radius: 10px;
+  }
+  
+  .countdown {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  /* Footer */
+  .footer {
+    background: #111;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer p {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .footer .socials {
+    margin-top: 10px;
+  }
