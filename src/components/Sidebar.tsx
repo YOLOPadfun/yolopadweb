@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
 const SidebarContainer = styled.div`
@@ -13,6 +13,17 @@ const SidebarContainer = styled.div`
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    top: auto;
+    padding: 10px 0;
+    border-right: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10;
+  }
 `;
 
 const LogoImg = styled(Link)`
@@ -23,6 +34,10 @@ const LogoImg = styled(Link)`
 
   img {
     width: 150px;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -58,10 +73,26 @@ const NavItem = styled(NavLink)`
     width: 25px;
     height: 25px;
   }
+
+  @media (max-width: 768px) {
+    padding: 8px 12px;
+    flex-direction: column;
+    font-size: 12px;
+
+    svg {
+      margin: 0 0 4px 0;
+      width: 20px;
+      height: 20px;
+    }
+  }
 `;
 
 const MoreButtonWrapper = styled.div`
   position: relative;
+
+  @media (max-width: 768px) {
+    position: static;
+  }
 `;
 
 const DropdownMenu = styled.div<{ isOpen: boolean }>`
@@ -77,6 +108,19 @@ const DropdownMenu = styled.div<{ isOpen: boolean }>`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   display: ${props => props.isOpen ? 'block' : 'none'};
   z-index: 1000;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    top: auto;
+    bottom: 80px;
+    right: 10px;
+    left: auto;
+    margin: 0;
+    width: 180px;
+    background: #1a1b23;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 999;
+  }
 `;
 
 const MenuItem = styled.a`
@@ -124,7 +168,7 @@ const MoreButton = styled.button<{ isActive: boolean }>`
     color: white;
     
     svg {
-      fill: ${props => props.isActive ? '#4ad0ac' : 'white'};
+      fill: white;
     }
   }
   
@@ -132,7 +176,26 @@ const MoreButton = styled.button<{ isActive: boolean }>`
     margin-right: 12px;
     width: 25px;
     height: 25px;
-    fill: ${props => props.isActive ? '#4ad0ac' : 'currentColor'};
+    fill:white;
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px 12px;
+    flex-direction: column;
+    width: auto;
+    color: #e3e7e6;
+    
+    &:hover {
+      background: none;
+      color: #e3e7e6;
+    }
+    
+    svg {
+      margin: 0 0 4px 0;
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
   }
 `;
 
@@ -141,6 +204,11 @@ const FooterContainer = styled.div`
   text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: auto;
+  margin-bottom: 8px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const FooterText = styled.div`
@@ -157,6 +225,20 @@ const Copyright = styled.div`
 const NavContent = styled.div`
   flex: 1;
   overflow-y: auto;
+
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow: visible;
+    position: relative;
+  }
+`;
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    overflow-x: hidden;
+  }
 `;
 
 const Sidebar = () => {
@@ -171,90 +253,104 @@ const Sidebar = () => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('click', handleClickOutside);
     };
   }, []);
 
+  useEffect(() => {
+  }, [isMoreOpen]);
+
   return (
-    <SidebarContainer>
-      <NavContent>
-        <LogoImg to="/">
-          <img src="/logo_svg.svg" alt="Logo" />
-        </LogoImg>
-        
-        <NavItem to="/" end>
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/>
-          </svg>
-          Home
-        </NavItem>
-        
-        <NavItem to="/advanced">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M13 12h7v1.5h-7zm0-2.5h7V11h-7zm0 5h7V16h-7zM21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 15h-9V6h9v13z"/>
-          </svg>
-          Advanced
-        </NavItem>
-        
-        <NavItem to="/create">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-          </svg>
-          Create Coin
-        </NavItem>
-        z 2
-        <MoreButtonWrapper ref={moreRef}>
-          <MoreButton 
-            isActive={isMoreOpen}
-            onClick={() => setIsMoreOpen(!isMoreOpen)}
-          >
+    <>
+      <GlobalStyle />
+      <SidebarContainer>
+        <NavContent>
+          <LogoImg to="/">
+            <img src="/logo_svg.svg" alt="Logo" />
+          </LogoImg>
+          
+          <NavItem to="/" end>
             <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+              <path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/>
             </svg>
-            more
-          </MoreButton>
-
-          <DropdownMenu isOpen={isMoreOpen}>
-            <MenuItem href="">How it works</MenuItem>
-            <MenuItem href="">
-              Support
-              <svg 
-                viewBox="0 0 24 24" 
-                fill="currentColor" 
-                style={{ marginLeft: '8px', width: '16px', height: '16px' }}
-              >
-                <path d="M18 10.82a1 1 0 0 0-1 1V19H7V7h7.18a1 1 0 0 0 0-2H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7.18a1 1 0 0 0-1-1z"/>
-                <path d="M21.92 2.62a1 1 0 0 0-.54-.54A1 1 0 0 0 21 2h-6a1 1 0 0 0 0 2h3.59l-8.29 8.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0L20 5.41V9a1 1 0 0 0 2 0V3a1 1 0 0 0-.08-.38z"/>
+            Home
+          </NavItem>
+          
+          <NavItem to="/advanced">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13 12h7v1.5h-7zm0-2.5h7V11h-7zm0 5h7V16h-7zM21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 15h-9V6h9v13z"/>
+            </svg>
+            Advanced
+          </NavItem>
+          
+          <NavItem to="/create">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+            </svg>
+            Create Coin
+          </NavItem>
+          
+          <MoreButtonWrapper ref={moreRef}>
+            <MoreButton 
+              isActive={isMoreOpen}
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsMoreOpen(!isMoreOpen);
+              }}
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
               </svg>
-            </MenuItem>
-            
-            <SocialLinks>
-              <SocialIcon href="https://x.com/Yolopadfun" target="_blank">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </SocialIcon>
-              <SocialIcon href="https://t.me" target="_blank">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.46-.42-1.4-.88.03-.24.38-.49 1.03-.75 4.03-1.75 6.72-2.91 8.07-3.48 3.85-1.63 4.64-1.91 5.17-1.91.11 0 .37.03.54.17.14.12.18.28.2.45-.02.05-.02.1-.02.14z"/>
-                </svg>
-              </SocialIcon>
-            </SocialLinks>
-          </DropdownMenu>
-        </MoreButtonWrapper>
-      </NavContent>
+              more
+            </MoreButton>
 
-      <FooterContainer>
-        <FooterText>
-          Email: contact@yolopad.fun
-        </FooterText>
-        <Copyright>
-          © 2025 YOLOPad. All rights reserved.
-        </Copyright>
-      </FooterContainer>
-    </SidebarContainer>
+            <DropdownMenu isOpen={isMoreOpen}>
+              <MenuItem href="" onClick={(e) => e.stopPropagation()}>
+                How it works
+              </MenuItem>
+              <MenuItem 
+                href="" 
+                onClick={(e) => e.stopPropagation()}
+              >
+                Support
+                <svg 
+                  viewBox="0 0 24 24" 
+                  fill="currentColor" 
+                  style={{ marginLeft: '8px', width: '16px', height: '16px' }}
+                >
+                  <path d="M18 10.82a1 1 0 0 0-1 1V19H7V7h7.18a1 1 0 0 0 0-2H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7.18a1 1 0 0 0-1-1z"/>
+                  <path d="M21.92 2.62a1 1 0 0 0-.54-.54A1 1 0 0 0 21 2h-6a1 1 0 0 0 0 2h3.59l-8.29 8.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0L20 5.41V9a1 1 0 0 0 2 0V3a1 1 0 0 0-.08-.38z"/>
+                </svg>
+              </MenuItem>
+              
+              <SocialLinks onClick={(e) => e.stopPropagation()}>
+                <SocialIcon href="https://x.com/Yolopadfun" target="_blank">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </SocialIcon>
+                <SocialIcon href="https://t.me" target="_blank">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.46-.42-1.4-.88.03-.24.38-.49 1.03-.75 4.03-1.75 6.72-2.91 8.07-3.48 3.85-1.63 4.64-1.91 5.17-1.91.11 0 .37.03.54.17.14.12.18.28.2.45-.02.05-.02.1-.02.14z"/>
+                  </svg>
+                </SocialIcon>
+              </SocialLinks>
+            </DropdownMenu>
+          </MoreButtonWrapper>
+        </NavContent>
+
+        <FooterContainer>
+          <FooterText>
+            Email: contact@yolopad.fun
+          </FooterText>
+          <Copyright>
+            © 2025 YOLOPad. All rights reserved.
+          </Copyright>
+        </FooterContainer>
+      </SidebarContainer>
+    </>
   );
 };
 

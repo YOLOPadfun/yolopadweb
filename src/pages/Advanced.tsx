@@ -12,6 +12,10 @@ const HomeContainer = styled.div`
   text-align: center;
   padding: 10px 10px;
   margin-left: 240px;
+   @media (max-width: 768px) {
+    margin-left: 0;
+    padding-bottom: 80px;
+  }
 `;
 
 const MainTitle = styled.h1`
@@ -20,6 +24,9 @@ const MainTitle = styled.h1`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 5px;
+   @media (max-width: 768px) {
+   font-size: 30px;
+  }
 `;
 
 const HomeTopButtons = styled(TopButtons)`
