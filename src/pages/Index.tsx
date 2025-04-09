@@ -113,7 +113,7 @@ const Home: React.FC = () => {
   };
 
   const handleBuyToken = () => {
-    console.log('Buying token...');
+    navigate('/create');
   };
 
   const handleJoinClick = () => {

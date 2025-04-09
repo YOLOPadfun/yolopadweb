@@ -21,19 +21,18 @@
     "react-scripts": "5.0.1",
     "styled-components": "^6.1.16",
     "typescript": "^5.5.3",
-    "web-vitals": "^2.1.4",
     "viem": "^2.23.8",
-    "wagmi": "^2.14.12"
+    "wagmi": "^2.14.12",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "preinstall": "rm -rf package-lock.json", 
+    "preinstall": "rm -rf package-lock.json",
     "deploy": "npm run build && wrangler pages deploy build",
     "deploy:prod": "npm run build && wrangler pages deploy build --project-name=yolopadweb --branch=main"
-  
   },
   "eslintConfig": {
     "extends": [

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Sidebar from '../components/Sidebar';
 import TopButtons from '../components/common/TopButtons';
+import { useNavigate } from 'react-router-dom';
 
 const HomeContainer = styled.div`
   min-height: 100vh;
@@ -33,12 +34,14 @@ const HomeTopButtons = styled(TopButtons)`
 `;
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
+
   const handleConnectWallet = () => {
     console.log('Connecting wallet...');
   };
 
   const handleBuyToken = () => {
-    console.log('Buying token...');
+    navigate('/create');
   };
 
   return (
