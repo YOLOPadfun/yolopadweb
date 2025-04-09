@@ -5,7 +5,15 @@ import './App.css';
 import Index from './pages/Index';
 import Advanced from './pages/Advanced';
 import Create from './pages/Create';
+import Mywallet from './pages/Mywallet';
 
+
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void;
+    dataLayer: any[];
+  }
+}
 
 function App() {
   return (
@@ -14,6 +22,7 @@ function App() {
           <Route path="/" element={<Index />} />
           <Route path="/advanced" element={<Advanced />} />
           <Route path="/create" element={<Create />} />
+          <Route path='/mywallet' element={<Mywallet />} />
           
         </Routes>
       </Router>

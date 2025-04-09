@@ -1,11 +1,11 @@
 import React from 'react';
 
 export const BurnIcon = () => (
-  <img src="/images/b_f.svg" alt="Burn Icon" width="60" height="60" />
+  <img src="/images/fire.png" alt="Burn Icon" width="60" height="60" />
 );
 
 export const MintingIcon = () => (
-    <img src="/images/lock.svg" alt="Burn Icon" width="60" height="60" />
+    <img src="/images/e.webp" alt="Burn Icon" width="60" height="60" />
 //   <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 //     <rect x="15" y="20" width="30" height="35" rx="2" 
 //       fill="#3498db"
@@ -58,7 +58,7 @@ export const BurnRewardIcon = () => (
 );
 
 export const SecurityIcon = () => (
-    <img src="/images/lp_lock.svg" alt="Burn Icon" width="60" height="60" />
+    <img src="/images/lock.png" alt="Burn Icon" width="60" height="60" />
 //   <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 //     <path d="M30 10L10 20V25C10 37.8 18.5 49.7 30 52C41.5 49.7 50 37.8 50 25V20L30 10Z" 
 //       fill="#3498db"
