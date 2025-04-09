@@ -387,7 +387,7 @@ const Create: React.FC = () => {
       } catch (error) {
         console.log(error);
       }
-      alert("Well Done")
+      alert("DO NOT FOMO")
     } else {
       console.log('Form validation failed:', formErrors);
     }

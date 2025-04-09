@@ -54,6 +54,9 @@ const Home: React.FC = () => {
         />
         
         <MainTitle>YOU ONLY LAUNCH ONCE</MainTitle>
+        <h2>You’re early.<br/><br/>
+The game? Not yet live.<br/><br/>
+But stay close — first blood belongs to the fast.</h2>
        
       </HomeContainer>
     </>
