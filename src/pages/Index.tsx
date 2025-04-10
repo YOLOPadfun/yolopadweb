@@ -130,44 +130,47 @@ const Home: React.FC = () => {
         />
         
         <MainTitle>YOU ONLY LAUNCH ONCE</MainTitle>
-        <Subtitle>Welcome to the future of token launches</Subtitle>
+        <Subtitle>Create, mint, burn, and win — YOLOPad is where tokens are born and battles begin</Subtitle>
         <ButtonWrapper>
           <JoinButton onClick={handleJoinClick}>JOIN THE BATTLE</JoinButton>
         </ButtonWrapper>
         
         <FeaturesGrid>
           <FeatureCard>
-            <BurnIcon />
+            <BurnRewardIcon />
+            <h3>Launch Your Own Token </h3>
+            <p>Be the next meme overlord. Deploy a token + rules + chaos, in 1 minute.</p>
+          </FeatureCard>
+          
+          <FeatureCard>
+          <MintingIcon />
+            <h3>Mint to Join</h3>
+            <p>Get in early. Fixed price, limited time. The earlier you mint, the cheaper you win.</p>
+          </FeatureCard>
+          
+          <FeatureCard>
+          <BurnIcon />
             <h3>Burn to Win</h3>
-            <p>Burn tokens to increase your rewards in real-time. The more you burn, the more you earn.</p>
-          </FeatureCard>
-          
-          <FeatureCard>
-            <MintingIcon />
-            <h3>Minting & LP Lock</h3>
-            <p>Secure token minting and liquidity locking for a fair and transparent process. Trust in every launch.</p>
-          </FeatureCard>
-          
-          <FeatureCard>
-            <RewardIcon />
-            <h3>Reward Pools</h3>
-            <p>Participate, burn, and earn from the reward pools. The more you contribute, the greater your share.</p>
+            <p>Burn tokens for leaderboard glory. Top burners split the BNB rewards.</p> 
           </FeatureCard>
         </FeaturesGrid>
 
-        <h2>WHAT MAKES YOLOPAD DIFFERENT?</h2>
+
         <FeaturesGrid>
           <FeatureCard>
-            <BurnRewardIcon />
-            <h3>Real-time burn-to-earn rewards</h3>
+          <RewardIcon />
+            <h3>Invite to Earn</h3>
+            <p>On-chain referrals. 1% real-time BNB rewards from your frend's mints. Forever.</p>
           </FeatureCard>
           <FeatureCard>
             <SecurityIcon />
-            <h3>True token liquidity (Locked by design)</h3>
+            <h3>Arb Like a Degen</h3>
+            <p>Mint here, trade there. Price gaps = profit, if you're fast enough.</p>
           </FeatureCard>
           <FeatureCard>
             <TransparentIcon />
-            <h3>Fair & transparent minting process</h3>
+            <h3>BNB Lottery Pools</h3>
+            <p>Every 10 BNB triggers a jackpot. If you minted, you might just hit it.</p>
           </FeatureCard>
         </FeaturesGrid>
       </HomeContainer>

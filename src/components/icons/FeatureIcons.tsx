@@ -47,7 +47,7 @@ export const RewardIcon = () => (
 );
 
 export const BurnRewardIcon = () => (
-    <img src="/images/burn_earn.svg" alt="Burn Icon" width="60" height="60" />
+    <img src="/images/be.png" alt="Burn Icon" width="60" height="60" />
 //   <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 //     <path d="M30 10C25 17 22 23 22 28C22 34.4 25.6 39 30 39C34.4 39 38 34.4 38 28C38 23 35 17 30 10Z" 
 //       fill="#FF4D4D"
@@ -75,7 +75,7 @@ export const SecurityIcon = () => (
 );
 
 export const TransparentIcon = () => (
-    <img src="/images/fair_t.svg" alt="Burn Icon" width="60" height="60" />
+    <img src="/images/fat_t.png" alt="Burn Icon" width="60" height="60" />
 //   <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 //     <rect x="10" y="20" width="40" height="30" rx="2" 
 //       fill="#9B59B6"
