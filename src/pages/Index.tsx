@@ -173,6 +173,8 @@ const Home: React.FC = () => {
             <p>Every 10 BNB triggers a jackpot. If you minted, you might just hit it.</p>
           </FeatureCard>
         </FeaturesGrid>
+        <h3>⚡ Some early users may end up on a list. We won’t say what kind.</h3>
+        
       </HomeContainer>
     </>
   );
